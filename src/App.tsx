@@ -1,13 +1,12 @@
 import './App.css'
-import MyComponent from "./components/MyComponent/MyComponent.tsx";
+import MyUsersComponent from "./components/MyComponent/MyUsersComponent.tsx";
 
 function App() {
 
     return (
-     <>
-         <MyComponent/>
-         {/*{MyComponent({text: 'another'})}*/}
-     </>
+        <>
+            <MyUsersComponent/>
+        </>
     )
 }
 
