@@ -1,5 +1,5 @@
 import './App.css'
-import FamilyComponent from "./components/FamilyComponent/FamilyComponent .tsx";
+import FamilyComponent from "./components/FamilyComponent/FamilyComponent.tsx";
 
 function App() {
 

@@ -1,6 +1,6 @@
 import simpsons from "../../data/simpsons.ts";
 import CharacterComponent from "../CharacterComponent/CharacterComponent.tsx";
-import ISimpson from "../../models/simpson.ts";
+import ISimpson from "../../models/ISimpson.ts";
 
 const FamilyComponent = () => {
     return (

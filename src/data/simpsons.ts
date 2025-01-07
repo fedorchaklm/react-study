@@ -1,4 +1,4 @@
-import ISimpson from "../models/simpson.ts";
+import ISimpson from "../models/ISimpson.ts";
 
 const simpsons: Array<ISimpson> = [
     {
