@@ -5,6 +5,7 @@ import {getTodosFromDummyjson} from "../../services/api.service.ts";
 
 const TodoComponents = () => {
     const [todos, setTodos] = useState<Array<ITodo>>([]);
+
     useEffect(() => {
        (async () => {
             const todos = await getTodosFromDummyjson();
@@ -12,11 +13,9 @@ const TodoComponents = () => {
         })()
     }, [])
 
-    return (
-        <div className='flex flex-col items-center justify-center gap-2'>
-            {todos.map((todo: ITodo) => (<TodoComponent todo={todo} key={todo.id}/>))}
-        </div>
-    )
+    return <div className='flex flex-col items-center justify-center gap-2'>
+        {todos.map((todo: ITodo) => <TodoComponent todo={todo} key={todo.id}/>)}
+    </div>
 }
 
 export default TodoComponents;
