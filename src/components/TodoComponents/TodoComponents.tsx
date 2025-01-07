@@ -4,20 +4,20 @@ import {useEffect, useState} from "react";
 import getTodos from "../../services/api.service.ts";
 
 const TodoComponents = () => {
-    const [items, setItem] = useState<Array<ITodo>>([]);
+    const [todos, setTodos] = useState<Array<ITodo>>([]);
+
     useEffect(() => {
-        const fetchData = async() => {
+        const fetchData = async () => {
             const todos = await getTodos();
-            setItem(todos);
+            setTodos(todos);
         }
 
         fetchData();
     }, [])
 
-
     return (
         <div className='flex flex-col items-center justify-center gap-2'>
-            {items.map((item:ITodo) => (<TodoComponent item={item} key={item.id}/>))}
+            {todos.map((todo: ITodo) => (<TodoComponent todo={todo} key={todo.id}/>))}
         </div>
     )
 }
