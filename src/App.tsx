@@ -4,7 +4,9 @@ import TodoComponents from "./components/TodoComponents/TodoComponents.tsx";
 function App() {
 
     return (
-    <TodoComponents/>
+        <>
+            <TodoComponents/>
+        </>
     )
 }
 
