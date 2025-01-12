@@ -9,7 +9,7 @@ export const CartsList: FC<CartsListProps> = ({cart}) => {
 
     return (
         <div className='flex flex-col items-center my-2'>
-            <p className='text-2xl'>Price of cart: {cart.total}$</p>
+            <p className='text-xl'>Price of cart: {cart.total}$</p>
             <ProductsList key={cart.id} cart={cart}/>
         </div>
     )
