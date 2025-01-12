@@ -4,7 +4,7 @@ import {Outlet} from "react-router-dom";
 export const HomePage = () => {
     return (
         <div className='flex flex-row'>
-            <div className='bg-amber-100 w-1/2'>
+            <div className='bg-amber-50 w-1/2 pt-2'>
                 <UsersList/>
             </div>
                 <Outlet/>
