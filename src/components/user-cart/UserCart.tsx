@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {ICart} from "../../model/ICart.ts";
 import './UserCart.css';
-import {CartsList} from "../cart-list/CartList.tsx";
+import {CartList} from "../cart-list/CartList.tsx";
 import {CartsService} from "../../services/carts.api.service.ts";
 import {getTotalPriceOfCarts} from "../../utils/utils.ts";
 
@@ -23,7 +23,7 @@ export const UserCart = () => {
     return (
         <div className='flex flex-col items-center'>
             {carts.length > 0 ? <p>Cart:</p> : <p>Empty cart</p>}
-            {carts.map((cart) => <CartsList key={cart.id} cart={cart}/>)}
+            {carts.map((cart) => <CartList key={cart.id} cart={cart}/>)}
             {carts.length > 1 ? <p className='text-2xl'>Total price of carts: {getTotalPriceOfCarts(carts)}$</p>: <p></p>}
         </div>
     )

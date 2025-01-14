@@ -5,7 +5,7 @@ import {ProductsList} from "../products-list/ProductsList.tsx";
 type CartsListProps = {
     cart: ICart;
 }
-export const CartsList: FC<CartsListProps> = ({cart}) => {
+export const CartList: FC<CartsListProps> = ({cart}) => {
 
     return (
         <div className='flex flex-col items-center my-2'>

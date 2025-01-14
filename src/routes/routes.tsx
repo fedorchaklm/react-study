@@ -1,12 +1,10 @@
-import {createBrowserRouter} from "react-router-dom";
+import {useRoutes} from "react-router-dom";
 import {MainLayout} from "../layouts/MainLayout.tsx";
-import {HomePage} from "../pages/home-page/HomePage.tsx";
-import {CartsPage} from "../pages/carts-page/CartsPage.tsx";
+import {appRoutes} from "./constants.ts";
+import UserChildren from "./UserChildren.tsx";
 
-export const routes = createBrowserRouter([
-    {path: '/', element: <MainLayout/>, children: [
-            {path: 'users', element: <HomePage/>, children: [
-                    {path:':id/carts', element: <CartsPage/>}
-                ]}
-        ]}
+export const RoutesComponent = () => useRoutes([
+    {
+        path: appRoutes.ROOT, element: <MainLayout/>, children: UserChildren
+    },
 ])
