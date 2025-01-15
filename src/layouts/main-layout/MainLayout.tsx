@@ -3,10 +3,8 @@ import {Outlet} from "react-router-dom";
 
 const MainLayout = () => {
     return (
-        <div className='flex flex-col justify-between min-h-screen pb-5'>
-            <div className='flex flex-col items-center gap-5'>
-                <Menu/>
-            </div>
+        <div className='flex flex-col justify-between pb-5'>
+            <Menu/>
             <div className='flex flex-col justify-start items-center gap-5'>
                 <Outlet/>
             </div>

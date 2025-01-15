@@ -1,14 +1,12 @@
 import {FC} from "react";
-import {IUser} from "../../models/IUser.ts";
+import IUser from "../../models/IUser.ts";
 
 type UserPropsType = {
     user: IUser;
 }
 const User: FC<UserPropsType> = ({user}) => {
     return (
-        <div>
-            {user.id} {user.firstName} {user.age}
-        </div>
+        <p className='px-2' >{user.id} {user.firstName} {user.lastName}</p>
     );
 };
 

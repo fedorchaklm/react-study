@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
-import {IUser} from "../../models/IUser.ts";
 import User from "../user/User.tsx";
 import {useSearchParams} from "react-router-dom";
 import {userApiService} from "../../services/user.api.service.tsx";
+import IUser from "../../models/IUser.ts";
 
-const Users = () => {
+const UsersList = () => {
     const [users, setUsers] = useState<Array<IUser>>([]);
     const [query] = useSearchParams();
 
@@ -15,10 +15,10 @@ const Users = () => {
     }, [query])
 
     return (
-        <div>
+        <div className='flex flex-col items-start w-60 text-xl'>
             {users.map((user) => <User key={user.id} user={user}/>)}
         </div>
     );
 };
 
-export default Users;
+export default UsersList;

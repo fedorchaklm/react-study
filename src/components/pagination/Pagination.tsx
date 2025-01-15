@@ -7,8 +7,8 @@ type PaginationPropsType = {
 }
 const Pagination: FC<PaginationPropsType> = ({maxPages}) => {
     const [query, setQuery] = useSearchParams({page: '1'})
+    let page = Number(query.get('page'));
     const handleOnClickPrev = () => {
-        let page = Number(query.get('page'));
         --page;
         if (page < 1) {
             page = 1;
@@ -17,7 +17,7 @@ const Pagination: FC<PaginationPropsType> = ({maxPages}) => {
     }
 
     const handleOnClickNext = () => {
-        let page = Number(query.get('page'));
+        // let page = Number(query.get('page'));
         ++page;
         if (page >= maxPages) {
             page = maxPages;
@@ -26,7 +26,7 @@ const Pagination: FC<PaginationPropsType> = ({maxPages}) => {
     }
 
     return (
-        <div className='flex flex-row justify-center gap-2'>
+        <div className='flex flex-row justify-center gap-2 my-5'>
             <button className='paginationBtn' onClick={handleOnClickPrev}>prev</button>
             <button className='paginationBtn' onClick={handleOnClickNext}>next</button>
         </div>
