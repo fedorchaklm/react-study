@@ -1,5 +1,6 @@
 import {FC} from "react";
 import {useSearchParams} from "react-router-dom";
+import './Pagination.css';
 
 type PaginationPropsType = {
     maxPages: number;
@@ -25,9 +26,9 @@ const Pagination: FC<PaginationPropsType> = ({maxPages}) => {
     }
 
     return (
-        <div>
-            <button onClick={handleOnClickPrev}>prev</button>
-            <button onClick={handleOnClickNext}>next</button>
+        <div className='flex flex-row justify-center gap-2'>
+            <button className='paginationBtn' onClick={handleOnClickPrev}>prev</button>
+            <button className='paginationBtn' onClick={handleOnClickNext}>next</button>
         </div>
     );
 };

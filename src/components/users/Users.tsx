@@ -9,9 +9,9 @@ const Users = () => {
     const [query] = useSearchParams();
 
     useEffect(() => {
-        const page = Number(query.get('page'));
+        const page = query.get('page') || '1';
         userApiService.getUsersByPage(page)
-            .then(setUsers);
+            .then(({users}) => setUsers(users));
     }, [query])
 
     return (

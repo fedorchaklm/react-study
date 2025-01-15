@@ -1,0 +1,7 @@
+.btn {
+    @apply px-2 py-2 bg-cyan-600 font-bold text-lg leading-tight;
+}
+
+.btn:hover {
+    @apply bg-cyan-400 cursor-pointer;
+}

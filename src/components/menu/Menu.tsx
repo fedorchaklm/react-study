@@ -1,14 +1,14 @@
 import {Link} from "react-router-dom";
-import {apiRoutes} from "../../routes/constants.ts";
+import './Menu.css';
 
 const Menu = () => {
     return (
-        <ul>
+        <ul className='flex flex-row gap-2'>
             <li>
-                <Link to={apiRoutes.HOME}>Home</Link>
+                <Link className='btn' to={'/'}>Home</Link>
             </li>
             <li>
-                <Link to={apiRoutes.USERS}>Users</Link>
+                <Link className='btn' to={'/users'}>Users</Link>
             </li>
         </ul>
     );
