@@ -1,4 +1,4 @@
-import User from "../user/User.tsx";
+import {User} from "../user/User.tsx";
 import IUser from "../../models/IUser.ts";
 import {FC} from "react";
 
