@@ -1,18 +1,12 @@
-import {useEffect, useState} from "react";
 import User from "../user/User.tsx";
-import {useSearchParams} from "react-router-dom";
-import {userApiService} from "../../services/user.api.service.tsx";
 import IUser from "../../models/IUser.ts";
+import {FC} from "react";
 
-const UsersList = () => {
-    const [users, setUsers] = useState<Array<IUser>>([]);
-    const [query] = useSearchParams();
+type UsersListProps = {
+    users: Array<IUser>;
+}
 
-    useEffect(() => {
-        const page = query.get('page') || '1';
-        userApiService.getUsersByPage(page)
-            .then(({users}) => setUsers(users));
-    }, [query])
+const UsersList: FC<UsersListProps> = ({users}) => {
 
     return (
         <div className='flex flex-col items-start w-60 text-xl'>
