@@ -6,30 +6,28 @@ type PaginationPropsType = {
     maxPages: number;
 }
 const Pagination: FC<PaginationPropsType> = ({maxPages}) => {
-    const [query, setQuery] = useSearchParams();
-    let page = Number(query.get('page')) || 1;
+    const [query, setQuery] = useSearchParams({page: '1'});
+    const currentPage = Number(query.get('page'));
+
     const handleOnClickPrev = () => {
-        --page;
-        if (page < 1) {
-            page = 1;
-        }
-        setQuery({page: page.toString()});
+        const newPageValue = currentPage - 1;
+        setQuery({page: newPageValue < 1 ? '1' : newPageValue.toString()});
     }
 
     const handleOnClickNext = () => {
-        ++page;
-        if (page >= maxPages) {
-            page = maxPages;
-        }
-        setQuery({page: page.toString()});
+        const newPageValue = currentPage + 1;
+        setQuery({page: newPageValue >= maxPages ? maxPages.toString() : newPageValue.toString()});
     }
 
     return (
-            <div className='flex flex-row justify-center items-center gap-2 my-5'>
-                <button className='paginationBtn' onClick={handleOnClickPrev}>prev</button>
-                <p className='text-2xl'>{page}/{maxPages}</p>
-                <button className='paginationBtn' onClick={handleOnClickNext}>next</button>
-            </div>
+        <div className='flex flex-row justify-center items-center gap-2 my-5'>
+            <button className={currentPage <= 1 ? 'disabledPaginationBtn' : 'paginationBtn'} onClick={handleOnClickPrev}>prev
+            </button>
+            <p className='text-2xl'>{currentPage}/{maxPages}</p>
+            <button className={currentPage >= maxPages ? 'disabledPaginationBtn' : 'paginationBtn'}
+                    onClick={handleOnClickNext}>next
+            </button>
+        </div>
     );
 };
 
