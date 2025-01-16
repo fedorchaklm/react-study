@@ -2,15 +2,16 @@ import UsersList from "../../components/users/UsersList.tsx";
 import Pagination from "../../components/pagination/Pagination.tsx";
 import {useEffect, useState} from "react";
 import {userApiService} from "../../services/user.api.service.tsx";
+import {getQuantityOfPages} from "../../utils/utils.ts";
+import {limitOfUsersByPage} from "../../constants/constants.ts";
 
 const UsersPage = () => {
     const [maxPages, setMaxPages] = useState<number>(1);
-    console.log({maxPages})
 
     useEffect(() => {
-        userApiService.getAllUsers()
-            .then(({total}) => {
-                setMaxPages(Math.round(total / 30))
+        userApiService.getQuantityOfAllUsers()
+            .then((total) => {
+                setMaxPages(getQuantityOfPages(total, limitOfUsersByPage))
             })
     }, []);
 
