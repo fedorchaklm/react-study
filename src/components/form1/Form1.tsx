@@ -41,7 +41,7 @@ export const Form1: FC = () => {
                    onChange={handleInputChange}/>
             <input className='border-2' type='text' name='password' value={formState.password}
                    onChange={handleInputChange}/>
-            <button className='border-2 px-2 bg-black text-white' type='submit'>Click</button>
+            <button className='border-2 px-2 bg-black text-white' type='submit'>Send</button>
         </form>
     )
 }
