@@ -11,7 +11,7 @@ export const Form1: FC = () => {
         password: ''
     });
 
-    const handleOnSubmit = (e: FormEvent) => {
+    const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const data = {
             username: formState.username,
@@ -30,7 +30,7 @@ export const Form1: FC = () => {
     //     setFormState({...formState, password: input.value});
     // }
 
-    const handleInputChange = (e: FormEvent) => {
+    const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
         const input = e.target as HTMLInputElement;
         setFormState({...formState, [input.name]: input.value});
     }
