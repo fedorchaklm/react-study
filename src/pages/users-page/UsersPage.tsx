@@ -1,9 +1,9 @@
+import {useSearchParams} from "react-router-dom";
 import UsersList from "../../components/users/UsersList.tsx";
 import Pagination from "../../components/pagination/Pagination.tsx";
 import {useEffect, useState} from "react";
 import {userApiService} from "../../services/user.api.service.tsx";
 import IUser from "../../models/IUser.ts";
-import {useSearchParams} from "react-router-dom";
 import {getQuantityOfPages} from "../../utils/utils.ts";
 import {limitOfUsersByPage} from "../../constants/constants.ts";
 import {Loading} from "../../components/loading/Loading.tsx";
