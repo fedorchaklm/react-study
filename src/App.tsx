@@ -1,11 +1,11 @@
 import './App.css'
-import {Form1} from "./components/form1/Form1.tsx";
+import {Form} from "./components/form-component/Form.tsx";
 
 function App() {
 
     return (
      <>
-         <Form1/>
+         <Form/>
      </>
     )
 }
