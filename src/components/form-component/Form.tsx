@@ -1,40 +1,34 @@
 import {useForm} from "react-hook-form";
+import {joiResolver} from "@hookform/resolvers/joi";
+import {userValidator} from "../../validators/userValidator.ts";
 
 interface IFormStateProps {
     username: string;
     password: string;
+    age: number;
 }
 
 export const Form = () => {
     const {handleSubmit, register, formState: {errors, isValid}} = useForm<IFormStateProps>({
-        mode: "onChange",
+        mode: "onChange", resolver: joiResolver(userValidator)
     });
 
-    const customerHandlerOnSubmit = (data: IFormStateProps) => {
-        console.log(data);
-
-    }
     return (
-        <form className='flex justify-center gap-4 mt-2' onSubmit={handleSubmit(customerHandlerOnSubmit)}>
-            <label><input className='border-2' type='text' {...register('username', {
-                required:
-                    {
-                        value: true,
-                        message: 'invalid username'
-                    },
-                minLength: {
-                    value: 2,
-                    message: 'too short username'
-                },
-                maxLength: {
-                    value: 10,
-                    message: 'too long username'
-                }
-            })}/>
-            </label>
+        <form className='flex flex-col items-center gap-2 py-2 border-orange-500 border-2 w-60'
+              onSubmit={handleSubmit((data: IFormStateProps) => console.log(data))}>
+            <label htmlFor='username'> Enter your username: </label>
+            <input id='username' className='border-2' type='text' {...register('username')}/>
             <div>{errors.username && errors.username.message}</div>
-            <input className='border-2' type='text'  {...register('password')}/>
-            <button className={isValid ? 'border-2 px-2 bg-black text-white' : 'cursor-not-allowed border-2 px-2 bg-black text-white '} type='submit' disabled={!isValid}>Send</button>
+            <label htmlFor='password'> Enter your password: </label>
+            <input id='password' className='border-2' type='text' {...register('password')}/>
+            <div>{errors.password && errors.password.message}</div>
+            <label htmlFor='age'> Enter your age: </label>
+            <input id='age' className='border-2' type='number' {...register('age')}/>
+            <div>{errors.age && errors.age.message}</div>
+            <button
+                className={isValid ? 'border-2 px-2 bg-black text-white' : 'cursor-not-allowed border-2 px-2 bg-black text-white '}
+                type='submit' disabled={!isValid}>Send
+            </button>
         </form>
     )
 }
