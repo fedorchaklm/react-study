@@ -7,7 +7,7 @@ import {sortedByParameter} from "../../utils/utils.ts";
 
 export const CarsList: FC = () => {
     const [cars, setCars] = useState<Array<ICar>>([]);
-    const [orderType, setOrderType] = useState<string>('id');
+    const [orderType, setOrderType] = useState<keyof ICar>('id');
     const [, setQuery] = useSearchParams({search: 'id'});
 
     useEffect(() => {
@@ -19,7 +19,7 @@ export const CarsList: FC = () => {
 
     const handleSelect = (e: FormEvent<HTMLSelectElement>) => {
         const select = e.target as HTMLSelectElement;
-        setOrderType(select.value);
+        setOrderType(select.value as keyof ICar);
         setQuery({search: select.value});
     }
 
@@ -34,7 +34,7 @@ export const CarsList: FC = () => {
                     <option value='price'>price</option>
                 </select>
             </div>
-            {cars.sort(sortedByParameter(orderType))
+            {cars.sort(sortedByParameter<ICar>(orderType))
                 .map((car) => <Car key={car.id} car={car}/>)}
         </div>
     )

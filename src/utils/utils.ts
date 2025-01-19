@@ -1,4 +1,4 @@
-export  const sortedByParameter = (parameter: string) => (prev, next) => {
+export const sortedByParameter = <T>(parameter: keyof T) => (prev:T, next: T) => {
     if (prev[parameter] > next[parameter]) {
         return 1;
     }
@@ -6,7 +6,5 @@ export  const sortedByParameter = (parameter: string) => (prev, next) => {
         return -1;
     }
 
-    if (prev[parameter] === next[parameter]) {
-        return 0;
-    }
+    return 0;
 }
