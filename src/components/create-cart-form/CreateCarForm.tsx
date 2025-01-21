@@ -4,14 +4,12 @@ import {carValidator} from "../../validators/carValidator.ts";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {carsService} from "../../services/cars.api.service.ts";
 
-type DataProps = Omit<ICar, 'id'>
-
 export const CreateCartForm = () => {
-    const {handleSubmit, register, formState: {errors, isValid}, reset} = useForm<DataProps>({
+    const {handleSubmit, register, formState: {errors, isValid}, reset} = useForm<Omit<ICar, 'id'>>({
         mode: "onChange", resolver: joiResolver(carValidator)
     });
 
-    const customerSubmit = async (data: DataProps) => {
+    const customerSubmit = async (data: Omit<ICar, 'id'>) => {
         await carsService.createCar(data);
         reset();
     }
@@ -30,11 +28,10 @@ export const CreateCartForm = () => {
                 <label htmlFor='price'>Enter price of car</label>
                 <input className='border-blue-800 border-2' id='price' type='number' {...register('price')} />
                 <div>{errors.price && errors.price.message}</div>
-                <button className='text-xl bg-black text-white px-2 py-2 rounded' type='submit'
+                <button className={isValid ? 'btn' : 'btn cursor-not-allowed'} type='submit'
                         disabled={!isValid}>create
                 </button>
             </form>
-
         </div>
     )
 }

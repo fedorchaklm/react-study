@@ -5,7 +5,9 @@ import {routes} from "./routes/routes.tsx";
 function App() {
 
     return (
-     <RouterProvider router={routes}/>
+        <>
+            <RouterProvider router={routes}/>
+        </>
     )
 }
 
