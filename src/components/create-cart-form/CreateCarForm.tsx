@@ -2,17 +2,18 @@ import {useForm} from "react-hook-form";
 import {ICar} from "../../models/ICar.ts";
 import {carValidator} from "../../validators/carValidator.ts";
 import {joiResolver} from "@hookform/resolvers/joi";
+import {carsService} from "../../services/cars.api.service.ts";
 
 type DataProps = Omit<ICar, 'id'>
 
 export const CreateCartForm = () => {
-
-    const {handleSubmit, register, formState: {errors, isValid}} = useForm<DataProps>({
+    const {handleSubmit, register, formState: {errors, isValid}, reset} = useForm<DataProps>({
         mode: "onChange", resolver: joiResolver(carValidator)
     });
 
-    const customerSubmit = (data: DataProps) => {
-        console.log(data);
+    const customerSubmit = async (data: DataProps) => {
+        await carsService.createCar(data);
+        reset();
     }
 
     return (
