@@ -3,6 +3,7 @@ import {ICar} from "../../models/ICar.ts";
 import {carValidator} from "../../validators/carValidator.ts";
 import {joiResolver} from "@hookform/resolvers/joi";
 import {carsService} from "../../services/cars.api.service.ts";
+import {toast, ToastContainer} from "react-toastify";
 
 export const CreateCartForm = () => {
     const {handleSubmit, register, formState: {errors, isValid}, reset} = useForm<Omit<ICar, 'id'>>({
@@ -12,6 +13,7 @@ export const CreateCartForm = () => {
     const customerSubmit = async (data: Omit<ICar, 'id'>) => {
         await carsService.createCar(data);
         reset();
+        toast("Car has been created successfully!")
     }
 
     return (
@@ -32,6 +34,7 @@ export const CreateCartForm = () => {
                         disabled={!isValid}>create
                 </button>
             </form>
+            <ToastContainer position="bottom-center" autoClose={2000} theme='dark'/>
         </div>
     )
 }
