@@ -7,7 +7,7 @@ export const Menu = () => {
                 <Link to={'/'}>Home</Link>
             </li>
             <li className='hover:text-amber-200'>
-                <Link to={'/carts'}>Cars
+                <Link to={'/cars'}>Cars
                 </Link>
             </li>
         </ul>
