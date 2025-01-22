@@ -1,9 +1,9 @@
-import {Outlet} from "react-router-dom";
+import {AuthProducts} from "../../components/auth-products/AuthProducts.tsx";
 
 export const AuthResourcesPage = () => {
     return (
         <>
-            <Outlet/>
+           <AuthProducts/>
         </>
     )
 }

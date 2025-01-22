@@ -6,7 +6,9 @@ export const MainLayout: FC = () => {
     return (
         <>
             <Menu/>
-            <Outlet/>
+            <div className='flex justify-center items-center mt-20'>
+                <Outlet/>
+            </div>
         </>
     )
 }
