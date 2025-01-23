@@ -3,7 +3,7 @@ import {ILoginData} from "../models/ILoginData.ts";
 import {IUserWithTokens} from "../models/IUserWithTokens.ts";
 import {IProductsResponseModel} from "../models/IProductResponseModel.ts";
 import {IProduct} from "../models/IProduct.ts";
-import {retriveLocalStorage} from "../helpers/helpers.ts";
+import {retriveLocalStorage, saveToLocalStorage} from "../helpers/helpers.ts";
 import {ITokensPair} from "../models/ITokensPair.ts";
 
 const axiosInstance = axios.create({
@@ -22,12 +22,12 @@ axiosInstance.interceptors.request.use((request) => {
 export const login = async (user: ILoginData): Promise<IUserWithTokens> => {
     const {data: userWithToken} = await axiosInstance.post<IUserWithTokens>('/login', user);
     console.log(userWithToken);
-    localStorage.setItem('user', JSON.stringify(userWithToken));
+    saveToLocalStorage('user', userWithToken);
     return userWithToken;
 }
 
 export const loadAuthProduct = async (): Promise<Array<IProduct>> => {
-    const {data: {products} } = await axiosInstance.get<IProductsResponseModel>('/products');
+    const {data: {products}} = await axiosInstance.get<IProductsResponseModel>('/products');
     console.log(products);
     return products;
 }
@@ -45,5 +45,5 @@ export const refreshToken = async () => {
     });
     userWithTokens.accessToken = accessToken;
     userWithTokens.refreshToken = refreshToken;
-    localStorage.setItem('user', JSON.stringify(userWithTokens));
+    saveToLocalStorage('user', userWithTokens);
 }
