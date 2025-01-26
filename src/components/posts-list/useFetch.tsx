@@ -7,7 +7,7 @@ export const useFetch = <T,>(url: string, defaultValue: T) => {
         fetch(url)
             .then(response => response.json())
             .then(json => setPosts(json))
-    }, []);
+    }, [url]);
 
     return {posts, setPosts};
 }
