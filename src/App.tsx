@@ -1,13 +1,23 @@
 import './App.css'
-import {UsersList} from "./components/users-list/UsersList.tsx";
+import {RightBranch} from "./components/RightBranch.tsx";
+import {LeftBranch} from "./components/LeftBranch.tsx";
+import {MyContext} from "./context/MyContext.ts";
+import {useState} from "react";
 
 function App() {
-    console.log('Hello App');
+    const [counter, setCounter] = useState<number>(0);
 
     return (
-        <>
-            <UsersList/>
-        </>
+        <MyContext.Provider value={{
+            currentValue: counter,
+            increment: (obj: number) => {
+                setCounter(++obj);
+            }
+        }}>
+            <LeftBranch/>
+            <hr/>
+            <RightBranch/>
+        </MyContext.Provider>
     )
 }
 
