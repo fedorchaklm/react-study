@@ -1,7 +1,7 @@
 import {FC} from "react";
 import {IPost} from "../../models/IPost.ts";
 import {Post} from "../post/Post.tsx";
-import {useFetch} from "./useFetch.ts";
+import {useFetch} from "./useFetch.tsx";
 
 export const PostsList: FC = () => {
     const {posts} = useFetch<Array<IPost>>('https://jsonplaceholder.typicode.com/posts', [])
