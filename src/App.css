@@ -1,0 +1,7 @@
+.dark {
+    @apply bg-black text-white p-6;
+}
+
+.light {
+    @apply bg-cyan-100 text-black p-6;
+}
