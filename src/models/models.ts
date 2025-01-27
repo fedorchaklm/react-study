@@ -4,7 +4,7 @@ export enum ThemeColor {
 
 export type ThemeContextType = {
     theme: ThemeColor;
-    changeTheme: (themeValue: ThemeColor) => void;
+    changeTheme: () => void;
 }
 
 
