@@ -1,9 +1,7 @@
-import {useContext} from "react";
-import {ThemeContext} from "../../context/themeContext.tsx";
-import {ThemeContextType} from "../../models/models.ts";
+import {useChangeTheme} from "../../context/ThemeContext.tsx";
 
 export const RightB = () => {
-    const {changeTheme} = useContext<ThemeContextType>(ThemeContext);
+    const changeTheme = useChangeTheme();
 
     return (
         <div className='flex flex-col'>

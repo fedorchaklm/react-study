@@ -1,8 +1,8 @@
-import {useContext} from "react";
-import {ThemeContext} from "../../context/themeContext.tsx";
+import { useTheme} from "../../context/ThemeContext.tsx";
 
 export const LeftB = () => {
-    const {theme} = useContext(ThemeContext);
+    const theme = useTheme();
+
     return (
         <div className={theme}>
             Left Component B

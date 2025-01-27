@@ -1,14 +1,10 @@
-import {createContext, FC, PropsWithChildren, useState} from "react";
+import {createContext, FC, PropsWithChildren, useContext, useState} from "react";
 import {ThemeColor, ThemeContextType} from "../models/models.ts";
 
-export const defaultValues = {
+const ThemeContext = createContext<ThemeContextType>({
     theme: ThemeColor.DARK,
-    changeTheme: () => {
-        console.log('dark');
-    }
-}
-
-export const ThemeContext = createContext<ThemeContextType>(defaultValues)
+    changeTheme: () => {},
+})
 
 export const ThemeProvider: FC<PropsWithChildren> = ({children}) => {
     const [theme, setTheme] = useState<ThemeColor>(ThemeColor.DARK);
@@ -22,3 +18,6 @@ export const ThemeProvider: FC<PropsWithChildren> = ({children}) => {
         </ThemeContext.Provider>
     )
 }
+
+export const useChangeTheme = () => useContext(ThemeContext).changeTheme;
+export const useTheme = () => useContext(ThemeContext).theme;
