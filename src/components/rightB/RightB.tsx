@@ -1,5 +1,5 @@
 import {useContext} from "react";
-import {ThemeContext} from "../../context/themeContext.ts";
+import {ThemeContext} from "../../context/themeContext.tsx";
 import {ThemeContextType} from "../../models/models.ts";
 
 export const RightB = () => {
@@ -8,7 +8,7 @@ export const RightB = () => {
     return (
         <div className='flex flex-col'>
             Right Component A
-            <button className='bg-white text-black px-4 rounded' onClick={() => changeTheme(theme)}>change
+            <button className='bg-cyan-400 text-black px-4 rounded mx-5' onClick={() => changeTheme(theme)}>change
                 theme</button>
         </div>
     )

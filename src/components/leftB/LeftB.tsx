@@ -1,5 +1,5 @@
 import {useContext} from "react";
-import {ThemeContext} from "../../context/themeContext.ts";
+import {ThemeContext} from "../../context/themeContext.tsx";
 
 export const LeftB = () => {
     const {theme} = useContext(ThemeContext);
