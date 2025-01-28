@@ -5,7 +5,7 @@ import {userSliceActions} from "../../redux/userSlice/userSlice.ts";
 import {useAppDispatch} from "../../redux/hooks/useAppDispatch.ts";
 
 export const UsersComponent: FC = () => {
-    const {users} = useAppSelector(({userSlice}) => userSlice);
+    const {users, loadState} = useAppSelector(({userSlice}) => userSlice);
     const dispatch = useAppDispatch();
 
     useEffect(() => {
@@ -14,6 +14,7 @@ export const UsersComponent: FC = () => {
 
     return (
         <>
+            {!loadState && <div>Loading</div>}
             {users && users.map((user) => <UserComponent key={user.id} user={user}/>)}
         </>
     )
