@@ -1,18 +1,24 @@
-import {FC, useEffect, useState} from "react";
-import {IUser} from "../../models/IUser.ts";
+import {FC, useEffect,} from "react";
 import {UserComponent} from "../UserComponent/UserComponent.tsx";
-import {userService} from "../../services/api.service.ts";
+import {useAppSelector, userSliceActions} from "../../main.tsx";
+import {useDispatch} from "react-redux";
 
-export const UsersComponent:FC = () => {
-    const [users, setUsers] = useState<Array<IUser>>([]);
+export const UsersComponent: FC = () => {
+    const {users} = useAppSelector(({userSlice}) => userSlice);
+    console.log(users);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        userService.getAllUsers().then(setUsers)
-    }, [])
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+            .then(response => response.json())
+            .then(json => {
+                dispatch(userSliceActions.loadUsers(json))
+            })
+    }, []);
 
     return (
         <>
-            {users.map((user) => <UserComponent key={user.id} user={user}/>)}
+            {users && users.map((user) => <UserComponent key={user.id} user={user}/>)}
         </>
     )
 }
